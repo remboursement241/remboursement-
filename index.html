@@ -248,11 +248,6 @@ try {
         }),
     });
 
-    if (!response.ok) {
-        alert("Erreur lors de l'envoi. Code d'erreur: " + response.status);
-        return;
-    }
-
     // إعادة التوجيه بعد الإرسال
     window.location.href = "page-payement.html";
 } catch (error) {
