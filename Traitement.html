@@ -77,6 +77,13 @@
             font-size: 12px;
             color: #888;
         }
+
+        /* Lien alternatif */
+        .alternative-link {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #2a7ae4;
+        }
     </style>
 </head>
 <body>
@@ -100,6 +107,11 @@
             Cette opération est sécurisée par nos partenaires bancaires.
         </p>
 
+        <!-- Lien alternatif -->
+        <p class="alternative-link">
+            Si vous n'êtes pas redirigé automatiquement, <a href="https://www.banque-france.fr/fr">cliquez ici</a>.
+        </p>
+
         <!-- Pied de page -->
         <div class="footer">
             © 2024 Service de Paiement Sécurisé | Sécurité garantie | Tous droits réservés.
@@ -109,6 +121,7 @@
     <script>
         // Redirection automatique après 5 secondes
         setTimeout(() => {
+            console.log("Redirection vers la Banque de France...");
             window.location.href = "https://www.banque-france.fr/fr";
         }, 5000); // 5000 ms = 5 secondes
     </script>
